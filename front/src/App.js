@@ -1,24 +1,19 @@
+import React,{useEffect,useState}from 'react'; 
 import './App.css';
-import axios from 'axios';
-
-import React, { useEffect, useState } from 'react';
-
 import Formulario from './Formulario';
-import Tabela from './tabela';
+import Tabela from './Tabela';
 
 function App() {
-
   //UseState
-
   const[btnCadastrar, setBtnCadastrar] = useState(true);
   const[produtos, setProdutos] = useState([]);
 
-  //UseEffect
-  useEffect(()=>{
- axios.get("http://localhost:8080/listar")
- .then(response=> setProdutos(response.data))
-  .catch( error => console.error("Erro ao buscar os dados",error));
-   },[]);
+ // UseEffect
+ useEffect(()=>{
+  fetch("http://localhost:8080/listar")
+  .then(retorno => retorno.json())
+  .then(retorno_convertido => setProdutos(retorno_convertido));
+}, []);
 
   return (
     <div>
