@@ -1,3 +1,5 @@
+import React from 'react';
+
 function Formulario({botao, eventoTeclado, cadastrar,obj,cancelar,remover,alterar}){
     return(
        <form>
